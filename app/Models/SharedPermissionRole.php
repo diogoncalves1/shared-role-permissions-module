@@ -12,6 +12,7 @@ class SharedPermissionRole extends Model
 
     protected $table = 'shared_permission_roles';
     protected $fillable = ['shared_role_id', 'shared_permission_id'];
+    public $timestamps = false;
 
     public function role()
     {
