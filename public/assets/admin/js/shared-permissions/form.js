@@ -2,13 +2,13 @@ const inputCode = document.querySelector("[name='code']");
 const errorFeedbackCode = document.getElementById("errorFeedbackCode");
 
 inputCode.addEventListener("input", function () {
-    checkRoleCode(this.value);
+    checkPermissionCode(this.value);
 });
 
-async function checkRoleCode(code) {
-    var url = "/api/shared-roles/check-code";
+async function checkPermissionCode(code) {
+    var url = "/api/shared-permissions/check-code";
     var id = window.location.pathname
-        .replace("/admin/shared-roles/", "")
+        .replace("/admin/shared-permissions/", "")
         .replace("/edit", "");
 
     var response = await $.ajax({

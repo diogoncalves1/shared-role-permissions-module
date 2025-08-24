@@ -1,5 +1,5 @@
-function modalDelete(id) {
-    modalAlert("Tem a certeza que quer apagar?", tryDelete, id);
+function modalDelete(url) {
+    modalAlert("Tem a certeza que quer apagar?", tryDelete, url);
 }
 
 function tryDelete(url) {

@@ -10,11 +10,11 @@ $(function () {
         columnDefs: [
             {
                 orderable: false,
-                targets: [2],
+                targets: [3],
             },
         ],
         ajax: {
-            url: "/api/shared-roles/data",
+            url: "/api/shared-permissions/data",
             type: "GET",
             dataSrc: function (json) {
                 console.log(json);
@@ -23,10 +23,13 @@ $(function () {
         },
         columns: [
             {
+                data: "name",
+            },
+            {
                 data: "code",
             },
             {
-                data: "name",
+                data: "category",
             },
             {
                 data: "actions",
