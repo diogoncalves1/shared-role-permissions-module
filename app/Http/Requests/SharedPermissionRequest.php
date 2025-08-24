@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class SharedPermissionRequest extends FormRequest
 {
@@ -21,10 +22,16 @@ class SharedPermissionRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            'code' => 'required|string|max:255',
+        $rules = [
             'name' => 'required|string|max:255',
             'category' => 'required|string|max:255'
         ];
+
+        if ($this->get("shared_permission_id"))
+            $rules['code'] = ['required', Rule::unique('shared_permissions')->ignore($this->get("shared_permission_id")), 'max:191'];
+        else
+            $rules['code'] = "required|unique:shared_permissions|max:191";
+
+        return $rules;
     }
 }

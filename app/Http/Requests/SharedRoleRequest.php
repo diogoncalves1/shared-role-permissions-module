@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use App\Enums\Language;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class SharedRoleRequest extends FormRequest
 {
@@ -23,9 +24,13 @@ class SharedRoleRequest extends FormRequest
     public function rules(): array
     {
         $rules = [
-            'code' => "required|string|max:100",
             'name' => 'required|array'
         ];
+
+        if ($this->get("shared_role_id"))
+            $rules['code'] = ['required', Rule::unique('shared_roles')->ignore($this->get("shared_role_id")), 'max:191'];
+        else
+            $rules['code'] = "required|unique:shared_roles|max:191";
 
         $languages = Language::cases();
 

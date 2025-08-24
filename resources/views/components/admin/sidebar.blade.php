@@ -1,6 +1,6 @@
 <aside class="main-sidebar elevation-4 sidebar-dark-primary">
 
-    <a href="{{ route('admin.currencies.index') }}" class="brand-link bg-primary bg-indigo bg-dark bg-gray-dark">
+    <a href="{{-- route('admin.shared-roles.index') --}}" class="brand-link bg-primary bg-indigo bg-dark bg-gray-dark">
         <span class="brand-text font-weight-light">Permissions</span>
     </a>
 
@@ -47,17 +47,30 @@
                     <nav class="mt-2">
                         <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent" data-widget="treeview"
                             role="menu" data-accordion="false">
-                            {{-- @can('authorization', 'viewCurrencies') --}}
+
+                            {{-- @if(auth()->user() && auth()->user()->hasPermission('viewAdminSharedRoles')) --}}
                             <li class="nav-item">
-                                <a href="{{ route('admin.currencies.index') }}"
-                                    class="nav-link {{ session('page') == 'currencies' ? 'active' : '' }}">
+                                <a href="{{ route('admin.shared-roles.index') }}"
+                                    class="nav-link {{ session('page') == 'shared roles' ? 'active' : '' }}">
                                     <i class="nav-icon fas fa-coins"></i>
                                     <p>
-                                        Moedas
+                                        Papeis de partilha
                                     </p>
                                 </a>
                             </li>
-                            {{-- @endcan  --}}
+                            {{-- @endif  --}}
+
+                            {{-- @if(auth()->user() && auth()->user()->hasPermission('viewAdminSharedPermissions')) --}}
+                            <li class="nav-item">
+                                <a href="{{ route('admin.shared-permissions.index') }}"
+                                    class="nav-link {{ session('page') == 'shared permissions' ? 'active' : '' }}">
+                                    <i class="nav-icon fas fa-coins"></i>
+                                    <p>
+                                        Permissoes de partilha
+                                    </p>
+                                </a>
+                            </li>
+                            {{-- @endif  --}}
                         </ul>
                     </nav>
                 </div>

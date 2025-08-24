@@ -2,23 +2,17 @@
 
 @section('title', 'Admin | Papeis de Partilhas ')
 
-@section('content')
+@section('css')
+<link rel="stylesheet" href="/admin-lte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+<link rel="stylesheet" href="/admin-lte/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+<link rel="stylesheet" href="/admin-lte/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+@endsection
 
-<section class="content-header">
-    <div class="container-fluid">
-        <div class="row mb-2">
-            <div class="col-sm-6">
-                <h1>Papeis de Partilhas</h1>
-            </div>
-            <div class="col-sm-6">
-                <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="/">Home</a></li>
-                    <li class="breadcrumb-item active">Papeis de Partilhas</li>
-                </ol>
-            </div>
-        </div>
-    </div>
-</section>
+@section('breadcrumb')
+<li class="breadcrumb-item active">Papeis de Partilhas</li>
+@endsection
+
+@section('content')
 
 <section class="content">
     <div class="container-fluid">
@@ -26,7 +20,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <button id="btnAdd" class="btn btn-default">Adicionar Papel de Partilha</button>
+                        <a href='{{ route("admin.shared-permissions.create") }}' class="btn btn-default">Adicionar Permissão de Partilha</a>
                     </div>
                     <div class="card-body">
                         <table id="table" class="table table-bordered table-striped ">
@@ -35,7 +29,6 @@
                                     <th>Codígo</th>
                                     <th>Nome</th>
                                     <th>Categoria</th>
-                                    <th>Descrição</th>
                                     <th>Ações</th>
                                 </tr>
                             </thead>
@@ -48,8 +41,16 @@
         </div>
     </div>
 </section>
+@endsection
 
-<script src="../assets/admin/js/super-admin/shared-permissions/index.js"></script>
-<script src="../assets/js/allIndex.js"></script>
+@section('script')
+<script src="/assets/admin/js/shared-permissions/index.js"></script>
+<script src="/assets/js/allIndex.js"></script>
 
+<script src="/admin-lte/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="/admin-lte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="/admin-lte/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="/admin-lte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="/admin-lte/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="/admin-lte/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
 @endsection
