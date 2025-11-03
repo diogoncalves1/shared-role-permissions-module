@@ -1,7 +1,7 @@
 <aside class="main-sidebar elevation-4 sidebar-dark-primary">
 
     <a href="{{-- route('admin.shared-roles.index') --}}" class="brand-link bg-primary bg-indigo bg-dark bg-gray-dark">
-        <span class="brand-text font-weight-light">Permissions</span>
+        <span class="brand-text font-weight-light">Shared Permissions Module</span>
     </a>
 
     <div
@@ -48,29 +48,29 @@
                         <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent" data-widget="treeview"
                             role="menu" data-accordion="false">
 
-                            {{-- @if(auth()->user() && auth()->user()->hasPermission('viewAdminSharedRoles')) --}}
+                            @can('authorization', 'viewSharedRole')
                             <li class="nav-item">
                                 <a href="{{ route('admin.shared-roles.index') }}"
-                                    class="nav-link {{ session('page') == 'shared roles' ? 'active' : '' }}">
-                                    <i class="nav-icon fas fa-coins"></i>
+                                    class="nav-link {!!  Illuminate\Support\Str::contains(\Request::route()->getName(), 'shared-roles') ? 'active' : '' !!}">
+                                    <i class="nav-icon fas fa-user-shield"></i>
                                     <p>
                                         Papeis de partilha
                                     </p>
                                 </a>
                             </li>
-                            {{-- @endif  --}}
+                            @endcan
 
-                            {{-- @if(auth()->user() && auth()->user()->hasPermission('viewAdminSharedPermissions')) --}}
+                            @can('authorization', 'viewSharedPermission')
                             <li class="nav-item">
                                 <a href="{{ route('admin.shared-permissions.index') }}"
-                                    class="nav-link {{ session('page') == 'shared permissions' ? 'active' : '' }}">
-                                    <i class="nav-icon fas fa-coins"></i>
+                                    class="nav-link {!!  Illuminate\Support\Str::contains(\Request::route()->getName(), 'shared-permissions') ? 'active' : '' !!}">
+                                    <i class="nav-icon fas fa-user-shield"></i>
                                     <p>
                                         Permissoes de partilha
                                     </p>
                                 </a>
                             </li>
-                            {{-- @endif  --}}
+                            @endcan
                         </ul>
                     </nav>
                 </div>

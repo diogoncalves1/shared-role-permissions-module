@@ -6,10 +6,8 @@ inputCode.addEventListener("input", function () {
 });
 
 async function checkRoleCode(code) {
-    var url = "/api/shared-roles/check-code";
-    var id = window.location.pathname
-        .replace("/admin/shared-roles/", "")
-        .replace("/edit", "");
+    var url = "/api/v1/shared-roles/check-code";
+    var id = document.querySelector("#sharedRoleId")?.value;
 
     var response = await $.ajax({
         url: url,
