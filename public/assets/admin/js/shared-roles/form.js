@@ -18,11 +18,13 @@ async function checkRoleCode(code) {
         },
     });
 
-    if (response.exists) {
+    console.log(response);
+
+    if (response.additionals.exists) {
         inputCode.classList.remove("is-valid");
         inputCode.classList.add("is-invalid");
         errorFeedbackCode.innerText = "Esse código já existe";
     } else inputCode.classList.remove("is-invalid");
 
-    return response.exists;
+    return response.additionals.exists;
 }

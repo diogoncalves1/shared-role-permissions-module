@@ -6,10 +6,8 @@ inputCode.addEventListener("input", function () {
 });
 
 async function checkPermissionCode(code) {
-    var url = "/api/shared-permissions/check-code";
-    var id = window.location.pathname
-        .replace("/admin/shared-permissions/", "")
-        .replace("/edit", "");
+    var url = "/api/v1/shared-permissions/check-code";
+    var id = document.querySelector("#sharedPermissionId")?.value;
 
     var response = await $.ajax({
         url: url,
@@ -20,11 +18,11 @@ async function checkPermissionCode(code) {
         },
     });
 
-    if (response.exists) {
+    if (response.additionals.exists) {
         inputCode.classList.remove("is-valid");
         inputCode.classList.add("is-invalid");
         errorFeedbackCode.innerText = "Esse código já existe";
     } else inputCode.classList.remove("is-invalid");
 
-    return response.exists;
+    return response.additionals.exists;
 }
