@@ -1,3 +1,7 @@
 {
-    "SharedRoles": true
+    "SharedRoles": true,
+    "User": true,
+    "UserPreferences": true,
+    "ApiResponder": true,
+    "Permission": true
 }
