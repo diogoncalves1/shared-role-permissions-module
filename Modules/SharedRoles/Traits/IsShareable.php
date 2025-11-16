@@ -15,6 +15,6 @@ trait IsShareable
             return null;
         }
 
-        return SharedRole::where('id', $user?->pivot->shared_role_id)->first();
+        return SharedRole::find($user?->pivot->shared_role_id);
     }
 }
