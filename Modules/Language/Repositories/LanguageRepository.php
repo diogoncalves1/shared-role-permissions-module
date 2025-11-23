@@ -12,7 +12,12 @@ class LanguageRepository implements RepositoryInterface
 {
     public function all()
     {
-        Language::all();
+        return Language::all();
+    }
+
+    public function allCodes()
+    {
+        return $this->all()->pluck('code')->toArray();
     }
 
     public function store(Request $request)
